@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mediawiki
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mediawiki
+  strategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: mediawiki
+    spec:
+      nodeName: pool-tusp902aw-3ewo5 #node name need to be changed 
+      containers: 
+      - image: gokulkarthick/mediawiki:latest
+        name: mediawiki
+        ports:
+        - containerPort: 80
+          name: mediawiki
