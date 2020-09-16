@@ -18,20 +18,21 @@
 ### apply changes to create kubernetes cluster
 5. terraform apply -var "do_token=${do}"
 
+### get the cluster id from terraform output
+6. export CLUSTER_ID=$(terraform output cluster-id)
 
 ### Accessing your cluster
 ### Programmatically getting the cluster id
-6. curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer ${do}" "https://api.digitalocean.com/v2/kubernetes/clusters/$CLUSTER_ID/kubeconfig" > config
+7. curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer ${do}" "https://api.digitalocean.com/v2/kubernetes/clusters/$CLUSTER_ID/kubeconfig" > config
 
 ### Setting the KUBECONFIG environment variable
-7. export KUBECONFIG=config
+8. export KUBECONFIG=config
 
 ### Confirming you have cluster access
-8. kubectl cluster-info
+9. kubectl cluster-info
 
 
 ## Commands used in Kubernetes
-
 
 ### Deploys a Mysql StatefulSet
 1. kubectl apply -f mysql-ss.yaml
@@ -59,7 +60,6 @@
 8. kubectl scale deployment.v1.apps/mediawiki --replicas=3
 
 
-
 ## Get Commands
 
 ### Get pods in our Cluster with worker node name.
@@ -76,7 +76,6 @@
 
 ### Get PV and PVC
 4. kubectl get pv,pvc
-
 
 
 ## Clean up
