@@ -14,7 +14,16 @@ spec:
       labels:
         app: mediawiki
     spec:
-      nodeName: pool-tusp902aw-3ewo5 #node name need to be changed
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - mysql
+            topologyKey: "kubernetes.io/hostname"
       containers: 
       - image: gokulkarthick/mediawiki:latest
         name: mediawiki
