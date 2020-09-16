@@ -10,6 +10,6 @@ resource "digitalocean_kubernetes_cluster" "k8s" {
   }
 }
 
-output "kubeconfig" {
-  value= digitalocean_kubernetes_cluster.k8s.kube_config.0.raw_config
+output "cluster-id" {
+  value = "${digitalocean_kubernetes_cluster.k8s.id}"
 }
