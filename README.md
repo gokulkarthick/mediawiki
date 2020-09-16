@@ -85,7 +85,7 @@
 1. kubectl delete -f mw-dep1.yaml
 
 ### Delete mediawiki service
-2. kubectl apply -f mw-svc.yaml
+2. kubectl delete -f mw-svc.yaml
 
 ### Delete configmap localsettings
 3. kubectl delete cm localsettings
